@@ -1,0 +1,25 @@
+{
+  "name": "viz-experiments",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wcjohnson11/Viz-experiments.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wcjohnson11/Viz-experiments/issues"
+  },
+  "homepage": "https://github.com/wcjohnson11/Viz-experiments",
+  "dependencies": {
+    "d3": "^3.5.6",
+    "duo": "^0.15.3",
+    "duo-babel": "^6.0.0",
+    "eslint": "^1.5.1"
+  }
+}
