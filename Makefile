@@ -1,52 +1,21 @@
+# Variables
 BIN := ./node_modules/.bin
-ESLINT := $(BIN)/eslint
-DUO := $(BIN)/duo
-
-#
-# Default.
-#
-
-default: client node_modules test-style
-
-#
-# client.
-#
-
-client: node_modules
-	@$(DUO) --copy --use ./support/duo client/index.js --stdout > client/build.js
-	@$(DUO) client/index.css --stdout > client/build.css
-
-#
-# Test style.
-#
-
-# test-style:
-# 	@$(ESLINT) ./client
-
-#
-# Dependencies.
-#
+watchify ?= $(BIN)/watchify
+browserify ?= $(BIN)/browserify
+babelify ?= $(BIN)/babelify
 
 node_modules: package.json
 	@npm install
 
-#
-# Clean.
-#
+test: node_modules
+	@./node_modules/.bin/mocha --reporter spec
 
-clean:
-	@rm client/build.js client/build.css
-	@rm -rf *.log
-	
-#
-# Clean dependencies.
-#
+dev: node_modules
+	$(watchify) lib/background/*.js -t babelify --outfile extension/background.js -d
+	$(watchify) lib/client/*.js -t babelify --outfile extension/clientBundle.js -d
 
-clean-deps:
-	@rm -rf node_modules components
+build: node_modules
+	browserify lib/background/*.js -t babelify --outfile extension/background.js
+	browserify lib/client/*.js -t babelify --outfile extension/clientBundle.js
 
-#
-# Phonies.
-#
-
-.PHONY: client test-style
+.PHONY: test

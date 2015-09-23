@@ -17,8 +17,9 @@
   },
   "homepage": "https://github.com/wcjohnson11/Viz-experiments",
   "dependencies": {
+    "babelify": "^6.3.0",
+    "browserify": "^11.1.0",
     "d3": "^3.5.6",
-    "duo": "^0.15.3",
-    "duo-babel": "^6.0.0"
+    "watchify": "^3.4.0"
   }
 }
