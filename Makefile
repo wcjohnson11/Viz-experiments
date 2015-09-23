@@ -20,8 +20,8 @@ client: node_modules
 # Test style.
 #
 
-test-style:
-	@$(ESLINT) ./client
+# test-style:
+# 	@$(ESLINT) ./client
 
 #
 # Dependencies.
